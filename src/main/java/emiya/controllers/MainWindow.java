@@ -105,6 +105,7 @@ public class MainWindow extends AnchorPane {
         } catch (EmiyaException e) {
             response = e.getMessage();
         }
+        assert response != null : "At the end, there will be a response to be printed and shown to the user.";
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),

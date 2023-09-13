@@ -138,9 +138,8 @@ public class Storage {
      */
     public boolean fillListWithFileContent(TaskList taskList, String fileContent)
             throws WrongDateTimeFormatException, InvalidDateException {
-        String[] tasksStrArr = fileContent.split("\n");
 
-        boolean isTaskAddedToList = false;
+        String[] tasksStrArr = fileContent.split("\n");
 
         for (String tasksStr : tasksStrArr) {
             if (tasksStr.isEmpty()) {
@@ -162,10 +161,9 @@ public class Storage {
             } else {
                 taskList.add(new Event(isCompletedBool, taskDetails, firstDate, secondDate));
             }
-            
-            isTaskAddedToList = true;
+
         }
 
-        return isTaskAddedToList;
+        return taskList.size() > 0;
     }
 }

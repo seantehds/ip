@@ -16,6 +16,8 @@ import emiya.emiyaexception.WrongDateTimeFormatException;
  * from the user has been parsed.
  */
 public class DateHandler {
+    private static final String EXAMPLE_OF_CORRECT_FORMAT = "Sep 10 2023 20:00:00";
+
     /**
      * A static method that builds up the necessary String needed to instantiate the necessary
      *     LocalDateTime object.
@@ -29,6 +31,9 @@ public class DateHandler {
             throws WrongDateTimeFormatException, InvalidDateException {
         // after parsing, array will be in format: [date, hour, min]
         String[] parsedDate = parseForDate(strFormat);
+
+        assert parsedDate.length == 3: "If program reaches this point, parsedDate should contain the date and time" +
+                "components only and with the correct format.";
 
         StringBuilder finalDateTimeStr = new StringBuilder(parsedDate[0]);
         finalDateTimeStr.append("T");
@@ -66,6 +71,9 @@ public class DateHandler {
         finalStr.append(min < 10 ? "0" + min : min);
         finalStr.append(":");
         finalStr.append("00");
+
+        assert finalStr.length() == EXAMPLE_OF_CORRECT_FORMAT.length() : "Final Date to be printed should be" +
+                "the same as the example with correct format.";
 
         return finalStr.toString();
     }
